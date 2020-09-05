@@ -54,7 +54,7 @@ class __AppHomePageState extends State<_AppHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _AppBar(),
-      body: _HomePageBody(),
+      body: _HomePageBody(_subscribeToDataChange),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -87,6 +87,10 @@ class _AppBar extends StatelessWidget implements PreferredSizeWidget {
 }
 
 class _HomePageBody extends StatefulWidget {
+  final Function _dataChangeHandler;
+
+  _HomePageBody(this._dataChangeHandler);
+
   @override
   __HomePageBodyState createState() => __HomePageBodyState();
 }
@@ -100,7 +104,7 @@ class __HomePageBodyState extends State<_HomePageBody> {
           TransactionChartView(),
           Container(
               height: MediaQuery.of(context).size.height * 1,
-              child: TransactionsListView()),
+              child: TransactionsListView(widget._dataChangeHandler)),
         ],
       ),
     );
