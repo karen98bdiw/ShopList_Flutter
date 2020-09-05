@@ -101,9 +101,11 @@ class __HomePageBodyState extends State<_HomePageBody> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          TransactionChartView(),
           Container(
-              height: MediaQuery.of(context).size.height * 1,
+              height: MediaQuery.of(context).size.height * 0.4,
+              child: TransactionChartView()),
+          Container(
+              height: MediaQuery.of(context).size.height * 0.5,
               child: TransactionsListView(widget._dataChangeHandler)),
         ],
       ),
